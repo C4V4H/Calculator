@@ -11,6 +11,10 @@ public class CalculatorController {
     @FXML
     private Label expressionLabel;
     private StringBuilder expression = new StringBuilder();
+
+    private boolean result = false;
+
+
     public void zero(ActionEvent actionEvent) {
         field.appendText("0");
     }
@@ -55,9 +59,7 @@ public class CalculatorController {
 
     public void add(ActionEvent actionEvent) {
         if(canPut()){
-            //@TODO string sopra al field
-            expression.append(field.getText());
-            expression.append("_+_");
+            expression.append(field.getText() + "_+_");
             expressionLabel.setText(expression.toString().replaceAll("_", " "));
             clear();
         }else{
@@ -68,9 +70,7 @@ public class CalculatorController {
 
     public void subtract(ActionEvent actionEvent) {
         if(canPut()){
-            //@TODO string sopra al field
-            expression.append(field.getText());
-            expression.append("_-_");
+            expression.append(field.getText() + "_-_");
             expressionLabel.setText(expression.toString().replaceAll("_", " "));
             clear();
         }else{
@@ -80,9 +80,7 @@ public class CalculatorController {
 
     public void multiply(ActionEvent actionEvent) {
         if(canPut()){
-            //@TODO string sopra al field
-            expression.append(field.getText());
-            expression.append("_*_");
+            expression.append(field.getText() + "_*_");
             expressionLabel.setText(expression.toString().replaceAll("_", " "));
             clear();
         }else{
@@ -93,9 +91,7 @@ public class CalculatorController {
 
     public void divide(ActionEvent actionEvent) {
         if(canPut()){
-            //@TODO string sopra al field
-            expression.append(field.getText());
-            expression.append("_/_");
+            expression.append(field.getText() + "_/_");
             expressionLabel.setText(expression.toString().replaceAll("_", " "));
             clear();
         }else{
@@ -104,23 +100,22 @@ public class CalculatorController {
     }
 
 
-
-    public void frazionario(ActionEvent actionEvent) {
+    public void frazionario(ActionEvent actionEvent) {//@TODO da fare :)
     }
 
-    public void percentBtn(ActionEvent actionEvent) {
+    public void percentBtn(ActionEvent actionEvent) {//@TODO da fare :)
     }
 
-    public void square(ActionEvent actionEvent) {
+    public void square(ActionEvent actionEvent) {//@TODO da fare :)
     }
 
-    public void sqrt(ActionEvent actionEvent) {
+    public void sqrt(ActionEvent actionEvent) {//@TODO da fare :)
     }
 
-    public void comma(ActionEvent actionEvent) {
+    public void comma(ActionEvent actionEvent) {//@TODO da fare :)
     }
 
-    public void negative(ActionEvent actionEvent) {
+    public void negative(ActionEvent actionEvent) {//@TODO da fare :)
     }
 
 
@@ -132,8 +127,6 @@ public class CalculatorController {
     public void delete(ActionEvent actionEvent) {
         if(!isEmpty())
             field.setText(field.getText(0, field.getLength()-1));
-        else
-            System.out.println("empty");
     }
 
     public void canc(ActionEvent actionEvent) {
@@ -143,9 +136,11 @@ public class CalculatorController {
 
     public void equals(ActionEvent actionEvent) {
         expression.append(field.getText());
-        System.out.println(expression);
-        clear();
-        expressionLabel.setText(expression.toString().replaceAll("_", " "));
+        String ris = Calculator.resolve(expression.toString());
+        field.setText(ris != null ? ris : "Err");
+        result = true;
+        expressionLabel.setText(expression.toString().replaceAll("_", " ") + " =");
+
     }
 
     private String getLast(){
@@ -192,6 +187,13 @@ public class CalculatorController {
 
     private void clear(){
         field.setText("");
+    }
+
+    /**
+     * Update Expression Label
+     */
+    private void updateEL(){
+        expressionLabel.setText(expression.toString().replaceAll("_", " "));
     }
 
 }
