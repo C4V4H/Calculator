@@ -58,45 +58,56 @@ public class CalculatorController {
 
 
     public void add(ActionEvent actionEvent) {
-        if(canPut()){
-            expression.append(field.getText() + "_+_");
-            expressionLabel.setText(expression.toString().replaceAll("_", " "));
-            clear();
-        }else{
-            System.out.println("err");
+        if(!canPut()) {
+            if (expressionLabel.getText().length() == 0)
+                return;
+
+            expression.delete(expression.length() - 3, expression.length());
         }
+        expression.append(field.getText()).append("_+_");
+        expressionLabel.setText(expression.toString().replaceAll("_", " "));
+        clear();
 
     }
 
     public void subtract(ActionEvent actionEvent) {
-        if(canPut()){
-            expression.append(field.getText() + "_-_");
-            expressionLabel.setText(expression.toString().replaceAll("_", " "));
-            clear();
-        }else{
-            System.out.println("err");
+        if(!canPut()) {
+            if (expressionLabel.getText().length() == 0)
+                return;
+
+            expression.delete(expression.length() - 3, expression.length());
         }
+        expression.append(field.getText()).append("_-_");
+        expressionLabel.setText(expression.toString().replaceAll("_", " "));
+        clear();
+
     }
 
     public void multiply(ActionEvent actionEvent) {
-        if(canPut()){
-            expression.append(field.getText() + "_*_");
-            expressionLabel.setText(expression.toString().replaceAll("_", " "));
-            clear();
-        }else{
-            System.out.println("err");
+        if(!canPut()) {
+            if (expressionLabel.getText().length() == 0)
+                return;
+
+            expression.delete(expression.length() - 3, expression.length());
         }
+        expression.append(field.getText()).append("_*_");
+        expressionLabel.setText(expression.toString().replaceAll("_", " "));
+        clear();
+
     }
 
 
     public void divide(ActionEvent actionEvent) {
-        if(canPut()){
-            expression.append(field.getText() + "_/_");
-            expressionLabel.setText(expression.toString().replaceAll("_", " "));
-            clear();
-        }else{
-            System.out.println("err");
+        if(!canPut()) {
+            if (expressionLabel.getText().length() == 0)
+                return;
+
+            expression.delete(expression.length() - 3, expression.length());
         }
+        expression.append(field.getText()).append("_/_");
+        expressionLabel.setText(expression.toString().replaceAll("_", " "));
+        clear();
+
     }
 
 
@@ -125,12 +136,13 @@ public class CalculatorController {
     }
 
     public void delete(ActionEvent actionEvent) {
-        if(!isEmpty())
+        if(field.getLength() != 0)
             field.setText(field.getText(0, field.getLength()-1));
     }
 
     public void canc(ActionEvent actionEvent) {
         expression.delete(0, expression.length());
+        expressionLabel.setText("");
         clear();
     }
 
@@ -172,17 +184,18 @@ public class CalculatorController {
     }
 
     private boolean isEmpty(){
-        return field.getLength() == 0;
+        return expression.length() == 0;
     }
 
     private boolean canPut(){
-        if (isEmpty()){
-            if(isNumber(expression.charAt(expression.length()-1)))
-                return expression.length() != 0;
+        if (isEmpty() && field.getLength() == 0)
+            return false;
+
+        try {
+            return isNumber(expression.charAt(expression.length() - 1));
+        }catch (Exception e){
+            return false;
         }
-
-        return isNumber(getLast());
-
     }
 
     private void clear(){

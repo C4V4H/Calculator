@@ -35,7 +35,7 @@ public class Calculator {
 
 
     private static String getOperation(String expression, int pos){
-        int start = 0, end = 0;
+        int start = 0, end = expression.length();
         for (int i = pos - 2; i > 0; i--){
             if (expression.charAt(i) == '_'){
                 start = i + 1;
@@ -43,12 +43,13 @@ public class Calculator {
             }
         }
 
-        for (int i = pos + 2; i < expression.length(); i--){
+        for (int i = pos + 2; i < expression.length(); i++){
             if (expression.charAt(i) == '_'){
-                end = pos + i;
+                end = i;
                 break;
             }
         }
+
 
         return expression.substring(start, end);
     }
