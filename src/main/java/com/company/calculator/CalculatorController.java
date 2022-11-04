@@ -172,7 +172,7 @@ public class CalculatorController {
     }
 
     private boolean isNumber(Character s){
-        if (s == null)
+        if (s.toString().length() == 0)
             return false;
 
         try{
@@ -190,11 +190,8 @@ public class CalculatorController {
     private boolean canPut(){
         if (isEmpty() && field.getLength() == 0)
             return false;
-
-        try {
-            return isNumber(expression.charAt(expression.length() - 1));
-        }catch (Exception e){
-            return false;
+        else {
+            return isNumber(getLast());
         }
     }
 
