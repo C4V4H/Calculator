@@ -1,2 +1,2 @@
 # Calculator
-Calcolatrice in jva
+Calcolatrice in java
