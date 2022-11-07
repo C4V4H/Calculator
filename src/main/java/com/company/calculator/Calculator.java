@@ -13,16 +13,16 @@ public class Calculator {
             sPos = expression.indexOf('-');
 
             if (mPos != -1 || dPos != -1) {
-                String calc = getOperation(expression, Math.max(mPos, dPos));
+                String calc = getOperation(expression, Math.min(mPos != -1 ? mPos : dPos+1, dPos != -1 ? dPos : mPos+1));
                 try {
-                    expression = expression.replace(calc, "" + resolveFromStr(calc, mPos > dPos ? "*" : "/"));
+                    expression = expression.replace(calc, "" + resolveFromStr(calc, mPos > dPos ? "*" : "/"));//tofix
                 } catch (NullPointerException e) {
                     return null;
                 }
             } else if (aPos != -1 || sPos != -1) {
-                String calc = getOperation(expression, Math.max(aPos, sPos));
+                String calc = getOperation(expression, Math.min(aPos != -1 ? aPos : sPos+1, sPos != -1 ? sPos : aPos+1));
                 try {
-                    expression = expression.replace(calc, "" + resolveFromStr(calc, aPos > sPos ? "+" : "-"));
+                    expression = expression.replace(calc, "" + resolveFromStr(calc, aPos > sPos ? "+" : "-"));//tofix
                 } catch (NullPointerException e) {
                     return null;
                 }
