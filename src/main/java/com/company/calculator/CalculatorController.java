@@ -4,7 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+/**
+ * @author Cavallero Lorenzo
+ * With a littel of help from Ermanno Oliveri
+ *
+ * Class CalculatorController
+ */
 public class CalculatorController {
     @FXML
     private TextArea field;
@@ -13,98 +22,198 @@ public class CalculatorController {
     private StringBuilder expression = new StringBuilder();
 
     private boolean result = false;
+    private boolean canPut = false;
+    private int enterCounter = 0;
 
+    @FXML
+   void keyPressed(KeyEvent event) {
+        field.setEditable(false);
+        switch (event.getCode()){
+            case DIGIT0: case NUMPAD0:
+                zero();
+                break;
+            case DIGIT1: case NUMPAD1:
+                one();
+                break;
+            case DIGIT2: case NUMPAD2:
+                two();
+                break;
+            case DIGIT3: case NUMPAD3:
+                tree();
+                break;
 
-    public void zero(ActionEvent actionEvent) {
+            case DIGIT4: case NUMPAD4:
+                four();
+                break;
+
+            case DIGIT5: case NUMPAD5:
+                five();
+                break;
+            case DIGIT6: case NUMPAD6:
+                six();
+                break;
+
+            case DIGIT7: case NUMPAD7:
+                seven();
+                break;
+
+            case DIGIT8: case NUMPAD8:
+                eight();
+                break;
+
+            case DIGIT9: case NUMPAD9:
+                nine();
+                break;
+            case ADD: case PLUS:
+                add();
+                break;
+            case MINUS: case SUBTRACT:
+                subtract();
+                break;
+            case MULTIPLY:
+                multiply();
+                break;
+            case DIVIDE:
+                divide();
+                break;
+            case DELETE:
+                ce();
+                break;
+            case DECIMAL: case COMMA: case PERIOD:
+                comma();
+                break;
+            case BACK_SPACE:
+                delete();
+                break;
+            case ENTER:
+                enterCounter++;
+                if(enterCounter % 2 == 0)
+                    equals();
+                break;
+
+        }
+    }
+
+    public void zero() {
         field.appendText("0");
+        canPut = true;
     }
 
-    public void one(ActionEvent actionEvent) {
+    public void one() {
         field.appendText("1");
+        canPut = true;
     }
 
-    public void two(ActionEvent actionEvent) {
+    public void two() {
         field.appendText("2");
+        canPut = true;
     }
 
-    public void tree(ActionEvent actionEvent){
+    public void tree() {
         field.appendText("3");
+        canPut = true;
     }
 
-    public void four(ActionEvent actionEvent){
+    public void four() {
         field.appendText("4");
+        canPut = true;
     }
 
-    public void five(ActionEvent actionEvent){
+    public void five() {
         field.appendText("5");
+        canPut = true;
     }
 
-    public void six(ActionEvent actionEvent) {
+    public void six() {
         field.appendText("6");
+        canPut = true;
     }
 
-    public void seven(ActionEvent actionEvent){
+    public void seven() {
         field.appendText("7");
+        canPut = true;
     }
 
-    public void eight(ActionEvent actionEvent) {
+    public void eight() {
         field.appendText("8");
+        canPut = true;
     }
 
-    public void nine(ActionEvent actionEvent) {
+    public void nine() {
         field.appendText("9");
+        canPut = true;
     }
 
 
-
-    public void add(ActionEvent actionEvent) {
-        if(!canPut()) {
+    public void add() {
+        if (!canPut) {
             if (expressionLabel.getText().length() == 0)
                 return;
 
             expression.delete(expression.length() - 3, expression.length());
         }
-        expression.append(field.getText()).append("_+_");
+
+        if (!result) {
+            expression.append(field.getText());
+        }
+        expression.append("_+_");
+        result = false;
+
         expressionLabel.setText(expression.toString().replaceAll("_", " "));
         clear();
 
     }
 
-    public void subtract(ActionEvent actionEvent) {
-        if(!canPut()) {
+    public void subtract() {
+        if (!canPut) {
             if (expressionLabel.getText().length() == 0)
                 return;
 
             expression.delete(expression.length() - 3, expression.length());
         }
-        expression.append(field.getText()).append("_-_");
+        if (!result) {
+            expression.append(field.getText());
+        }
+        expression.append("_-_");
+        result = false;
+
         expressionLabel.setText(expression.toString().replaceAll("_", " "));
         clear();
 
     }
 
-    public void multiply(ActionEvent actionEvent) {
-        if(!canPut()) {
+    public void multiply() {
+        if (!canPut) {
             if (expressionLabel.getText().length() == 0)
                 return;
 
             expression.delete(expression.length() - 3, expression.length());
         }
-        expression.append(field.getText()).append("_*_");
+        if (!result) {
+            expression.append(field.getText());
+        }
+        expression.append("_*_");
+        result = false;
+
         expressionLabel.setText(expression.toString().replaceAll("_", " "));
         clear();
 
     }
 
 
-    public void divide(ActionEvent actionEvent) {
-        if(!canPut()) {
+    public void divide() {
+        if (!canPut) {
             if (expressionLabel.getText().length() == 0)
                 return;
 
             expression.delete(expression.length() - 3, expression.length());
         }
-        expression.append(field.getText()).append("_/_");
+        if (!result) {
+            expression.append(field.getText());
+        }
+        expression.append("_/_");
+        result = false;
+
         expressionLabel.setText(expression.toString().replaceAll("_", " "));
         clear();
 
@@ -123,38 +232,46 @@ public class CalculatorController {
     public void sqrt(ActionEvent actionEvent) {//@TODO da fare :)
     }
 
-    public void comma(ActionEvent actionEvent) {//@TODO da fare :)
+    public void comma() {//@TODO da fare :)
     }
 
-    public void negative(ActionEvent actionEvent) {//@TODO da fare :)
+    public void negative() {//@TODO da fare :)
     }
 
 
-
-    public void ce(ActionEvent actionEvent) {
+    public void ce() {
         clear();
     }
 
-    public void delete(ActionEvent actionEvent) {
-        if(field.getLength() != 0)
-            field.setText(field.getText(0, field.getLength()-1));
+    public void delete() {
+        if (!result) {
+            if (field.getLength() != 0)
+                field.setText(field.getText(0, field.getLength() - 1));
+        }
     }
 
-    public void canc(ActionEvent actionEvent) {
+    public void canc() {
         expression.delete(0, expression.length());
         expressionLabel.setText("");
         clear();
     }
 
-    public void equals(ActionEvent actionEvent) {
+    public void equals() {
         expression.append(field.getText());
         String ris = Calculator.resolve(expression.toString());
         field.setText(ris != null ? ris : "Err");
         result = true;
         expressionLabel.setText(expression.toString().replaceAll("_", " ") + " =");
+        expression.delete(0, expression.length()).append(ris);
 
     }
 
+    private void clear(){
+        field.setText("");
+        canPut = false;
+    }
+}
+/*
     private String getLast(){
         return field.getText(field.getLength()-1, field.getLength());
     }
@@ -187,23 +304,7 @@ public class CalculatorController {
         return expression.length() == 0;
     }
 
-    private boolean canPut(){
-        if (isEmpty() && field.getLength() == 0)
-            return false;
-        else {
-            return isNumber(getLast());
-        }
-    }
-
-    private void clear(){
-        field.setText("");
-    }
-
-    /**
-     * Update Expression Label
-     */
     private void updateEL(){
         expressionLabel.setText(expression.toString().replaceAll("_", " "));
     }
-
-}
+*/

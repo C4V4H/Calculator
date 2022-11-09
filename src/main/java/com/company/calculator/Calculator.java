@@ -6,23 +6,54 @@ public class Calculator {
     public static String resolve(String expression) {
         //"*" position, "/" position, "+" position, "-" position;
         int mPos, dPos, aPos, sPos;
+        String calc;
         do {
-            mPos = expression.indexOf("*");
-            dPos = expression.indexOf('/');
-            aPos = expression.indexOf('+');
-            sPos = expression.indexOf('-');
+            mPos = expression.indexOf("_*_");
+            dPos = expression.indexOf("_/_");
+            aPos = expression.indexOf("_+_");
+            sPos = expression.indexOf("_-_");
 
             if (mPos != -1 || dPos != -1) {
-                String calc = getOperation(expression, Math.min(mPos != -1 ? mPos : dPos+1, dPos != -1 ? dPos : mPos+1));
+                if(mPos == -1) {
+                    dPos++;
+                    calc = getOperation(expression, dPos);
+                    mPos = dPos + 1;
+                }
+                else if(dPos == -1) {
+                    mPos++;
+                    calc = getOperation(expression, mPos);
+                    dPos = mPos + 1;
+                }
+                else {
+                    mPos++;
+                    dPos++;
+                    calc = getOperation(expression, Math.min(mPos, dPos));
+                }
+
                 try {
-                    expression = expression.replace(calc, "" + resolveFromStr(calc, mPos > dPos ? "*" : "/"));//tofix
+                    expression = expression.replace(calc, "" + resolveFromStr(calc, mPos < dPos ? "*" : "/"));
                 } catch (NullPointerException e) {
                     return null;
                 }
             } else if (aPos != -1 || sPos != -1) {
-                String calc = getOperation(expression, Math.min(aPos != -1 ? aPos : sPos+1, sPos != -1 ? sPos : aPos+1));
+                if(aPos == -1){
+                    sPos++;
+                    calc = getOperation(expression, sPos);
+                    aPos = sPos + 1;
+                }
+                else if(sPos == -1){
+                    aPos++;
+                    calc = getOperation(expression, aPos);
+                    sPos = aPos + 1;
+                }
+                else{
+                    aPos++;
+                    sPos++;
+                    calc = getOperation(expression, Math.min(aPos, sPos));
+                }
+
                 try {
-                    expression = expression.replace(calc, "" + resolveFromStr(calc, aPos > sPos ? "+" : "-"));//tofix
+                    expression = expression.replace(calc, "" + resolveFromStr(calc, aPos < sPos ? "+" : "-"));
                 } catch (NullPointerException e) {
                     return null;
                 }
@@ -81,6 +112,4 @@ public class Calculator {
             return null;
         }
     }
-
-
 }
