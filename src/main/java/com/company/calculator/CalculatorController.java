@@ -26,71 +26,31 @@ public class CalculatorController {
     private int enterCounter = 0;
 
     @FXML
-   void keyPressed(KeyEvent event) {
+    void keyPressed(KeyEvent event) {
         field.setEditable(false);
-        switch (event.getCode()){
-            case DIGIT0: case NUMPAD0:
-                zero();
-                break;
-            case DIGIT1: case NUMPAD1:
-                one();
-                break;
-            case DIGIT2: case NUMPAD2:
-                two();
-                break;
-            case DIGIT3: case NUMPAD3:
-                tree();
-                break;
-
-            case DIGIT4: case NUMPAD4:
-                four();
-                break;
-
-            case DIGIT5: case NUMPAD5:
-                five();
-                break;
-            case DIGIT6: case NUMPAD6:
-                six();
-                break;
-
-            case DIGIT7: case NUMPAD7:
-                seven();
-                break;
-
-            case DIGIT8: case NUMPAD8:
-                eight();
-                break;
-
-            case DIGIT9: case NUMPAD9:
-                nine();
-                break;
-            case ADD: case PLUS:
-                add();
-                break;
-            case MINUS: case SUBTRACT:
-                subtract();
-                break;
-            case MULTIPLY:
-                multiply();
-                break;
-            case DIVIDE:
-                divide();
-                break;
-            case DELETE:
-                ce();
-                break;
-            case DECIMAL: case COMMA: case PERIOD:
-                comma();
-                break;
-            case BACK_SPACE:
-                delete();
-                break;
-            case ENTER:
+        switch (event.getCode()) {
+            case DIGIT0, NUMPAD0 -> zero();
+            case DIGIT1, NUMPAD1 -> one();
+            case DIGIT2, NUMPAD2 -> two();
+            case DIGIT3, NUMPAD3 -> tree();
+            case DIGIT4, NUMPAD4 -> four();
+            case DIGIT5, NUMPAD5 -> five();
+            case DIGIT6, NUMPAD6 -> six();
+            case DIGIT7, NUMPAD7 -> seven();
+            case DIGIT8, NUMPAD8 -> eight();
+            case DIGIT9, NUMPAD9 -> nine();
+            case ADD, PLUS -> add();
+            case MINUS, SUBTRACT -> subtract();
+            case MULTIPLY -> multiply();
+            case DIVIDE -> divide();
+            case DELETE -> ce();
+            case DECIMAL, COMMA, PERIOD -> comma();
+            case BACK_SPACE -> delete();
+            case ENTER -> {
                 enterCounter++;
-                if(enterCounter % 2 == 0)
+                if (enterCounter % 2 == 0)
                     equals();
-                break;
-
+            }
         }
     }
 
@@ -232,10 +192,17 @@ public class CalculatorController {
     public void sqrt(ActionEvent actionEvent) {//@TODO da fare :)
     }
 
-    public void comma() {//@TODO da fare :)
+    public void comma() {
+
     }
 
-    public void negative() {//@TODO da fare :)
+    public void negative() {
+        if(!result) {
+            if (!field.getText().contains("-"))
+                field.setText("-" + field.getText());
+            else
+                field.setText(field.getText().replace("-", ""));
+        }
     }
 
 
@@ -257,13 +224,25 @@ public class CalculatorController {
     }
 
     public void equals() {
-        expression.append(field.getText());
-        String ris = Calculator.resolve(expression.toString());
-        field.setText(ris != null ? ris : "Err");
-        result = true;
-        expressionLabel.setText(expression.toString().replaceAll("_", " ") + " =");
-        expression.delete(0, expression.length()).append(ris);
+        if(!result){
+            try{
+                if(!canPut){
+                    if (expressionLabel.getText().length() == 0)
+                        return;
 
+                    expression.delete(expression.length() - 3, expression.length());
+                }
+                expression.append(field.getText());
+                String ris = Calculator.resolve(expression.toString());
+                field.setText(ris);
+                result = true;
+                expressionLabel.setText(expression.toString().replaceAll("_", " ") + " =");
+                expression.delete(0, expression.length()).append(ris); }
+            catch (Exception e){
+                System.out.println("An error occured :(");
+                canc();
+            }
+        }
     }
 
     private void clear(){

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" onKeyPressed="#keyPressed" prefHeight="335.0" prefWidth="253.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.calculator.CalculatorController">
+<VBox alignment="CENTER" onKeyPressed="#keyPressed" prefHeight="335.0" prefWidth="253.0" spacing="20.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.company.calculator.CalculatorController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
@@ -15,30 +15,30 @@
    <TextArea fx:id="field" onKeyPressed="#keyPressed" prefHeight="0.0" prefWidth="213.0" />
    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="213.0">
       <children>
-         <Button fx:id="seven" layoutX="1.0" layoutY="104.0" mnemonicParsing="false" onAction="#seven" prefHeight="47.0" prefWidth="52.0" text="7" />
-         <Button fx:id="five" layoutX="54.0" layoutY="152.0" mnemonicParsing="false" onAction="#five" prefHeight="47.0" prefWidth="52.0" text="5" />
-         <Button fx:id="four" layoutX="1.0" layoutY="152.0" mnemonicParsing="false" onAction="#four" prefHeight="47.0" prefWidth="52.0" text="4" />
-         <Button fx:id="nine" layoutX="107.0" layoutY="104.0" mnemonicParsing="false" onAction="#nine" prefHeight="47.0" prefWidth="52.0" text="9" />
-         <Button fx:id="eight" layoutX="54.0" layoutY="104.0" mnemonicParsing="false" onAction="#eight" prefHeight="47.0" prefWidth="52.0" text="8" />
-         <Button fx:id="comma" layoutX="107.0" layoutY="248.0" mnemonicParsing="false" onAction="#comma" prefHeight="47.0" prefWidth="52.0" text="," />
-         <Button fx:id="zero" layoutX="54.0" layoutY="248.0" mnemonicParsing="false" onAction="#zero" prefHeight="47.0" prefWidth="52.0" text="0" />
-         <Button fx:id="negative" layoutX="1.0" layoutY="248.0" mnemonicParsing="false" onAction="#negative" prefHeight="47.0" prefWidth="52.0" text="+/-" />
-         <Button fx:id="tree" layoutX="107.0" layoutY="200.0" mnemonicParsing="false" onAction="#tree" prefHeight="47.0" prefWidth="52.0" text="3" />
-         <Button fx:id="two" layoutX="54.0" layoutY="200.0" mnemonicParsing="false" onAction="#two" prefHeight="47.0" prefWidth="52.0" text="2" />
-         <Button fx:id="one" layoutX="1.0" layoutY="200.0" mnemonicParsing="false" onAction="#one" prefHeight="47.0" prefWidth="52.0" text="1" />
-         <Button fx:id="six" layoutX="107.0" layoutY="152.0" mnemonicParsing="false" onAction="#six" prefHeight="47.0" prefWidth="52.0" text="6" />
-         <Button fx:id="multiply" layoutX="160.0" layoutY="104.0" mnemonicParsing="false" onAction="#multiply" prefHeight="47.0" prefWidth="52.0" text="X" />
-         <Button fx:id="subtract" layoutX="160.0" layoutY="152.0" mnemonicParsing="false" onAction="#subtract" prefHeight="47.0" prefWidth="52.0" text="-" />
-         <Button fx:id="add" layoutX="160.0" layoutY="200.0" mnemonicParsing="false" onAction="#add" prefHeight="47.0" prefWidth="52.0" text="+" />
-         <Button fx:id="equals" layoutX="160.0" layoutY="248.0" mnemonicParsing="false" onAction="#equals" prefHeight="47.0" prefWidth="52.0" text="=" />
-         <Button fx:id="square" layoutX="54.0" layoutY="56.0" mnemonicParsing="false" onAction="#square" prefHeight="47.0" prefWidth="52.0" text="x^2" />
-         <Button fx:id="frazionario" layoutX="1.0" layoutY="56.0" mnemonicParsing="false" onAction="#frazionario" prefHeight="47.0" prefWidth="52.0" text="1/x" />
-         <Button fx:id="divide" layoutX="160.0" layoutY="56.0" mnemonicParsing="false" onAction="#divide" prefHeight="47.0" prefWidth="52.0" text="/" />
-         <Button fx:id="sqrt" layoutX="107.0" layoutY="56.0" mnemonicParsing="false" onAction="#sqrt" prefHeight="47.0" prefWidth="52.0" text="sqrt" />
-         <Button fx:id="CE" layoutX="54.0" layoutY="8.0" mnemonicParsing="false" onAction="#ce" prefHeight="47.0" prefWidth="52.0" text="CE" />
-         <Button fx:id="percent" layoutX="1.0" layoutY="8.0" mnemonicParsing="false" onAction="#percentBtn" prefHeight="47.0" prefWidth="52.0" text="\%" />
-         <Button fx:id="del" layoutX="160.0" layoutY="8.0" mnemonicParsing="false" onAction="#delete" prefHeight="47.0" prefWidth="52.0" text="DEL" />
-         <Button fx:id="canc" layoutX="107.0" layoutY="8.0" mnemonicParsing="false" onAction="#canc" prefHeight="47.0" prefWidth="52.0" text="C" />
+         <Button onKeyPressed="#keyPressed" fx:id="seven" layoutX="1.0" layoutY="104.0" mnemonicParsing="false" onAction="#seven" prefHeight="47.0" prefWidth="52.0" text="7" />
+         <Button onKeyPressed="#keyPressed" fx:id="five" layoutX="54.0" layoutY="152.0" mnemonicParsing="false" onAction="#five" prefHeight="47.0" prefWidth="52.0" text="5" />
+         <Button onKeyPressed="#keyPressed" fx:id="four" layoutX="1.0" layoutY="152.0" mnemonicParsing="false" onAction="#four" prefHeight="47.0" prefWidth="52.0" text="4" />
+         <Button onKeyPressed="#keyPressed" fx:id="nine" layoutX="107.0" layoutY="104.0" mnemonicParsing="false" onAction="#nine" prefHeight="47.0" prefWidth="52.0" text="9" />
+         <Button onKeyPressed="#keyPressed" fx:id="eight" layoutX="54.0" layoutY="104.0" mnemonicParsing="false" onAction="#eight" prefHeight="47.0" prefWidth="52.0" text="8" />
+         <Button onKeyPressed="#keyPressed" fx:id="comma" layoutX="107.0" layoutY="248.0" mnemonicParsing="false" onAction="#comma" prefHeight="47.0" prefWidth="52.0" text="," />
+         <Button onKeyPressed="#keyPressed" fx:id="zero" layoutX="54.0" layoutY="248.0" mnemonicParsing="false" onAction="#zero" prefHeight="47.0" prefWidth="52.0" text="0" />
+         <Button onKeyPressed="#keyPressed" fx:id="negative" layoutX="1.0" layoutY="248.0" mnemonicParsing="false" onAction="#negative" prefHeight="47.0" prefWidth="52.0" text="+/-" />
+         <Button onKeyPressed="#keyPressed" fx:id="tree" layoutX="107.0" layoutY="200.0" mnemonicParsing="false" onAction="#tree" prefHeight="47.0" prefWidth="52.0" text="3" />
+         <Button onKeyPressed="#keyPressed" fx:id="two" layoutX="54.0" layoutY="200.0" mnemonicParsing="false" onAction="#two" prefHeight="47.0" prefWidth="52.0" text="2" />
+         <Button onKeyPressed="#keyPressed" fx:id="one" layoutX="1.0" layoutY="200.0" mnemonicParsing="false" onAction="#one" prefHeight="47.0" prefWidth="52.0" text="1" />
+         <Button onKeyPressed="#keyPressed" fx:id="six" layoutX="107.0" layoutY="152.0" mnemonicParsing="false" onAction="#six" prefHeight="47.0" prefWidth="52.0" text="6" />
+         <Button onKeyPressed="#keyPressed" fx:id="multiply" layoutX="160.0" layoutY="104.0" mnemonicParsing="false" onAction="#multiply" prefHeight="47.0" prefWidth="52.0" text="X" />
+         <Button onKeyPressed="#keyPressed" fx:id="subtract" layoutX="160.0" layoutY="152.0" mnemonicParsing="false" onAction="#subtract" prefHeight="47.0" prefWidth="52.0" text="-" />
+         <Button onKeyPressed="#keyPressed" fx:id="add" layoutX="160.0" layoutY="200.0" mnemonicParsing="false" onAction="#add" prefHeight="47.0" prefWidth="52.0" text="+" />
+         <Button onKeyPressed="#keyPressed" fx:id="equals" layoutX="160.0" layoutY="248.0" mnemonicParsing="false" onAction="#equals" prefHeight="47.0" prefWidth="52.0" text="=" />
+         <Button onKeyPressed="#keyPressed" fx:id="square" layoutX="54.0" layoutY="56.0" mnemonicParsing="false" onAction="#square" prefHeight="47.0" prefWidth="52.0" text="x^2" />
+         <Button onKeyPressed="#keyPressed" fx:id="frazionario" layoutX="1.0" layoutY="56.0" mnemonicParsing="false" onAction="#frazionario" prefHeight="47.0" prefWidth="52.0" text="1/x" />
+         <Button onKeyPressed="#keyPressed" fx:id="divide" layoutX="160.0" layoutY="56.0" mnemonicParsing="false" onAction="#divide" prefHeight="47.0" prefWidth="52.0" text="/" />
+         <Button onKeyPressed="#keyPressed" fx:id="sqrt" layoutX="107.0" layoutY="56.0" mnemonicParsing="false" onAction="#sqrt" prefHeight="47.0" prefWidth="52.0" text="sqrt" />
+         <Button onKeyPressed="#keyPressed" fx:id="CE" layoutX="54.0" layoutY="8.0" mnemonicParsing="false" onAction="#ce" prefHeight="47.0" prefWidth="52.0" text="CE" />
+         <Button onKeyPressed="#keyPressed" fx:id="percent" layoutX="1.0" layoutY="8.0" mnemonicParsing="false" onAction="#percentBtn" prefHeight="47.0" prefWidth="52.0" text="\%" />
+         <Button onKeyPressed="#keyPressed" fx:id="del" layoutX="160.0" layoutY="8.0" mnemonicParsing="false" onAction="#delete" prefHeight="47.0" prefWidth="52.0" text="DEL" />
+         <Button onKeyPressed="#keyPressed" fx:id="canc" layoutX="107.0" layoutY="8.0" mnemonicParsing="false" onAction="#canc" prefHeight="47.0" prefWidth="52.0" text="C" />
       </children>
    </Pane>
 </VBox>
