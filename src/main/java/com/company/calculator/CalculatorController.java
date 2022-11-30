@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 /**
  * @author Cavallero Lorenzo
- * With a littel of help from Ermanno Oliveri
+ * With a very littel littel littel littel of help from Ermanno Oliveri
  *
  * Class CalculatorController
  */
@@ -22,6 +22,10 @@ public class CalculatorController {
     private StringBuilder expression = new StringBuilder();
 
     private boolean result = false;
+
+    private double n1 = 0, n2 = 0;
+    private char operator;
+    private int opCounter;
     private boolean canPut = false;
     private int enterCounter = 0;
 
@@ -43,7 +47,7 @@ public class CalculatorController {
             case MINUS, SUBTRACT -> subtract();
             case MULTIPLY -> multiply();
             case DIVIDE -> divide();
-            case DELETE -> ce();
+            case DELETE -> canc();
             case DECIMAL, COMMA, PERIOD -> comma();
             case BACK_SPACE -> delete();
             case ENTER -> {
@@ -106,12 +110,14 @@ public class CalculatorController {
 
 
     public void add() {
+        operator = '+';
         if (!canPut) {
             if (expressionLabel.getText().length() == 0)
                 return;
 
             expression.delete(expression.length() - 3, expression.length());
-        }
+        } else
+            opCounter++;
 
         if (!result) {
             expression.append(field.getText());
@@ -120,17 +126,21 @@ public class CalculatorController {
         result = false;
 
         expressionLabel.setText(expression.toString().replaceAll("_", " "));
+        n1 = Double.parseDouble(field.getText());
         clear();
 
     }
 
     public void subtract() {
+        operator = '-';
         if (!canPut) {
             if (expressionLabel.getText().length() == 0)
                 return;
 
             expression.delete(expression.length() - 3, expression.length());
-        }
+        }else
+            opCounter++;
+
         if (!result) {
             expression.append(field.getText());
         }
@@ -138,17 +148,21 @@ public class CalculatorController {
         result = false;
 
         expressionLabel.setText(expression.toString().replaceAll("_", " "));
+        n1 = Double.parseDouble(field.getText());
         clear();
 
     }
 
     public void multiply() {
+        operator = '*';
         if (!canPut) {
             if (expressionLabel.getText().length() == 0)
                 return;
 
             expression.delete(expression.length() - 3, expression.length());
-        }
+        }else
+            opCounter++;
+
         if (!result) {
             expression.append(field.getText());
         }
@@ -156,18 +170,22 @@ public class CalculatorController {
         result = false;
 
         expressionLabel.setText(expression.toString().replaceAll("_", " "));
+        n1 = Double.parseDouble(field.getText());
         clear();
 
     }
 
 
     public void divide() {
+        operator = '/';
         if (!canPut) {
             if (expressionLabel.getText().length() == 0)
                 return;
 
             expression.delete(expression.length() - 3, expression.length());
-        }
+        }else
+            opCounter++;
+
         if (!result) {
             expression.append(field.getText());
         }
@@ -175,6 +193,8 @@ public class CalculatorController {
         result = false;
 
         expressionLabel.setText(expression.toString().replaceAll("_", " "));
+
+        n1 = Double.parseDouble(field.getText());
         clear();
 
     }
@@ -218,12 +238,14 @@ public class CalculatorController {
     }
 
     public void canc() {
+        opCounter = 0;
         expression.delete(0, expression.length());
         expressionLabel.setText("");
         clear();
     }
 
     public void equals() {
+        String ris ;
         if(!result){
             try{
                 if(!canPut){
@@ -233,7 +255,7 @@ public class CalculatorController {
                     expression.delete(expression.length() - 3, expression.length());
                 }
                 expression.append(field.getText());
-                String ris = Calculator.resolve(expression.toString());
+                ris = findResult();
                 field.setText(ris);
                 result = true;
                 expressionLabel.setText(expression.toString().replaceAll("_", " ") + " =");
@@ -248,6 +270,25 @@ public class CalculatorController {
     private void clear(){
         field.setText("");
         canPut = false;
+    }
+
+
+    private String findResult(){
+        if(opCounter == 1){
+            n2 = Double.parseDouble(field.getText());
+
+            opCounter = 0;
+            return switch (operator){
+                case '+' -> Double.toString(n1 + n2);
+                case '-' -> Double.toString(n1 - n2);
+                case '*' -> Double.toString(n1 * n2);
+                case '/' -> Double.toString(n1 / n2);
+                default -> null;
+            };
+        }
+        opCounter = 0;
+        return Calculator.resolve(expression.toString());
+
     }
 }
 /*

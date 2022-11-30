@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /**
  * @author Cavallero Lorenzo
- * With a littel of help from Ermanno Oliveri
+ * With a little of help from Ermanno Oliveri
  *
  * Class Main
  */
