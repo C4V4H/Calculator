@@ -4,14 +4,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 /**
- * @author Cavallero Lorenzo
- * With the help of Ermanno Oliveri
- *
  * Class Main
+ * 
+ * @author Cavallero Lorenzo (With the help of Ermanno Oliveri)
+ * @version b.0.2
  */
 public class Main extends Application {
     @Override

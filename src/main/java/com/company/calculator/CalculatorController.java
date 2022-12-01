@@ -6,10 +6,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 
 /**
- * @author Cavallero Lorenzo
- * With a very little of help from Ermanno Oliveri
- *
- * Class CalculatorController
+ * Class CalculatorController, the controller for the GUI
+ * 
+ * @author Cavallero Lorenzo (With the help of Ermanno Oliveri)
+ * @version b.0.2
  */
 public class CalculatorController {
 

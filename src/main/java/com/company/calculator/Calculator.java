@@ -1,8 +1,10 @@
 package com.company.calculator;
 
 /**
- * @author Cavallero Lorenzo
  * Class Calculator, it manages the algorithm for find the result
+ * 
+ * @author Cavallero Lorenzo
+ * @version b.0.2
  */
 public class Calculator {
 
