@@ -1,7 +1,7 @@
 # Calculator
 Calculator in java
 
-(until the version b.0.2 all the program was done by "C4V4H")
+(until the version b.0.2, the program was fully done by "C4V4H")
 
 # Update ver. b.0.2
 Pach Notes:
