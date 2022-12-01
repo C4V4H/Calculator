@@ -11,7 +11,7 @@ Pach Notes:
 
 # Legend of keyBoard shortcut:
 
-DIGIT0 & NUMPAD0 -> add 0 in the field;
+*DIGIT0 & NUMPAD0* -> add 0 in the field;
 DIGIT1 & NUMPAD1 -> add 1 in the field;
 DIGIT2 & NUMPAD2 -> add 2 in the field;
 DIGIT3 & NUMPAD3 -> add 3 in the field;
