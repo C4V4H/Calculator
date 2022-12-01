@@ -3,7 +3,7 @@ Calculator in java
 
 (until the version b.0.2, the program was fully done by "C4V4H")
 
-# Update ver. b.0.2
+## Update ver. b.0.2
 Pach Notes:
 
 
@@ -15,7 +15,7 @@ Pach Notes:
 
 
 
-### Legend of keyBoard shortcut:
+## Legend of keyBoard shortcut:
 
 **DIGIT0 & NUMPAD0** -> add 0 in the field;
 
