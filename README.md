@@ -43,7 +43,7 @@ Pach Notes:
 
 **MULTIPLY (Numpad '*')**-> multiplication operator;
 
-**DIVIDE (Numpad '/')**-> divide();
+**DIVIDE (Numpad '/')**-> division operator;
 
 **MINUS (Digit '-')**-> change the sign of the number in the field;
 
