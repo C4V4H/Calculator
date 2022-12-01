@@ -5,13 +5,17 @@ Calculator in java
 
 # Update ver. b.0.2
 Pach Notes:
--Added support for exponentials;
--Added support for double numbers;
--Fixed another bug with equals;
+
+
+* Added support for exponentials;
+
+* Added support for double numbers;
+
+* Fixed another bug with equals;
 
 
 
-# Legend of keyBoard shortcut:
+### Legend of keyBoard shortcut:
 
 **DIGIT0 & NUMPAD0** -> add 0 in the field;
 
