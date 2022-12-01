@@ -9,14 +9,14 @@ import java.io.IOException;
 
 /**
  * @author Cavallero Lorenzo
- * With a little of help from Ermanno Oliveri
+ * With the help of Ermanno Oliveri
  *
  * Class Main
  */
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Calc.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("CalculatorGUI.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
