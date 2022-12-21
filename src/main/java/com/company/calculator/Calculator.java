@@ -14,14 +14,9 @@ public class Calculator {
   public Calculator() {}
 
   /**
-   * Given a string of numbers, resolution of the expression.
-   * @param expression
-   * @return
-   */
-  /**
    * It takes a string, that contains the expression to resolve
-   * it first do the exponentials, secondly it do the multiplications and divisions
-   * and lastly it do the additions and subtractions.
+   * it first do the exponential, secondly it do the multiplications and divisions
+   * lastly it do the additions and subtractions.
    *
    * @param expression The expression to be resolved.
    * @return The result of the calculation.
@@ -37,20 +32,20 @@ public class Calculator {
       aPos = expression.indexOf("_+_");
       sPos = expression.indexOf("_-_");
 
-      //if there are exponentials, it do them first, and then do the others.
+      //if there are exponential, it does them first, and then do the others.
       if (powPos != -1) {
         calc = getOperation(expression, ++powPos);
 
-        //it do the operation and replace the calc in the expression with the result.
+        //it does the operation and replace the calc in the expression with the result.
         try {
           expression = expression.replace(calc, "" + resolveFromStr(calc, "^"));
         } catch (NullPointerException e) {
           return null;
         }
       }
-      //if there are multiplications or divisions, it do them first, and then do the others.
+      //if there are multiplications or divisions, it does them first, and then do the others.
       else if (mPos != -1 || dPos != -1) {
-        //it find the calc in the expression
+        //it finds the calc in the expression
         if (mPos == -1) {
           dPos++;
           calc = getOperation(expression, dPos);
@@ -65,7 +60,7 @@ public class Calculator {
           calc = getOperation(expression, Math.min(mPos, dPos));
         }
 
-        //it do the operation and replace the calc in the expression with the result.
+        //it does the operation and replace the calc in the expression with the result.
         try {
           expression =
             expression.replace(
@@ -76,7 +71,7 @@ public class Calculator {
           return null;
         }
       } else if (aPos != -1 || sPos != -1) {
-        //it find the calc in the expression
+        //it finds the calc in the expression
         if (aPos == -1) {
           sPos++;
           calc = getOperation(expression, sPos);
@@ -91,7 +86,7 @@ public class Calculator {
           calc = getOperation(expression, Math.min(aPos, sPos));
         }
 
-        //it do the operation and replace the calc in the expression with the result.
+        //it does the operation and replace the calc in the expression with the result.
         try {
           expression =
             expression.replace(
@@ -104,12 +99,12 @@ public class Calculator {
       }
     }
 
-    //when it don't find any "_" that means the expression is resolved, so it return it
+    //when it doesn't find any "_" that means the expression is resolved, so it return it
     return expression;
   }
 
   /**
-   * From the given expression an positions it return the single operation.
+   * From the given expression a positions it return the single operation.
    *
    * @param expression the expression to be evaluated
    * @param pos the position of the operator in the expression

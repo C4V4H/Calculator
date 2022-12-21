@@ -1,0 +1,43 @@
+.btn, .btnNum, .btnEq {
+    -fx-color: #313131;
+    -fx-font-size: 16px;
+    -fx-border-radius: 0;
+    -fx-border-style: solid;
+    -fx-font-weight: bold;
+
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+
+
+}
+
+.btnNum{
+    -fx-color: #3b3b3b;
+}
+
+.btnEq{
+    -fx-color:#71d4dc;
+}
+
+.btn:hover, .btnNum:hover, .btnEq:hover {
+    -fx-background-color: #202020;
+}
+
+VBox{
+    -fx-background-color: #000000;
+}
+
+.field, .expressionLabel{
+    -fx-text-fill: #e2e1e1;
+}
+
+.field{
+    -fx-font-size: 30px;
+    -fx-text-alignment: right;
+}
+
+.expressionLabel{
+    -fx-font-size: 20px;
+    -fx-text-alignment: right;
+
+}

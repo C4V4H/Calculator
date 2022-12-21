@@ -2,8 +2,8 @@ package com.company.calculator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.VBox;
 
 /**
  * Class CalculatorController, the controller for the GUI
@@ -12,19 +12,21 @@ import javafx.scene.input.KeyEvent;
  * @version b.0.2
  */
 public class CalculatorController {
-
   // declaration of all the attributes of the controller
   @FXML
-  private TextArea field;
+  public VBox VBox;
+
+  @FXML
+  private MyLabel field;
 
   @FXML
   private Label expressionLabel;
 
-  private StringBuilder expression = new StringBuilder();
+  private final StringBuilder expression = new StringBuilder();
 
   private boolean result = false;
 
-  private double n1 = 0, n2 = 0;
+  private double n1 = 0;
   private char operator;
   private int opCounter;
   private boolean canPut = false;
@@ -32,7 +34,6 @@ public class CalculatorController {
 
   /**
    * "If the user presses a key, the program will do something depending on the key pressed."
-   *
    * The first thing the program does is set the field to not editable. This is because the user
    * should not be able to type in the field. The program will do that for them
    *
@@ -40,7 +41,7 @@ public class CalculatorController {
    */
   @FXML
   void keyPressed(KeyEvent event) {
-    field.setEditable(false);
+    VBox.requestFocus();
     switch (event.getCode()) {
       case DIGIT0, NUMPAD0 -> zero();
       case DIGIT1, NUMPAD1 -> one();
@@ -66,7 +67,6 @@ public class CalculatorController {
         enterCounter++;
         if (enterCounter % 2 == 0) equals();
       }
-      default -> field.setEditable(false);
     }
   }
 
@@ -76,6 +76,7 @@ public class CalculatorController {
   public void zero() {
     field.appendText("0");
     canPut = true;
+    VBox.requestFocus();
   }
 
   /**
@@ -84,6 +85,7 @@ public class CalculatorController {
   public void one() {
     field.appendText("1");
     canPut = true;
+    VBox.requestFocus();
   }
 
   /**
@@ -92,6 +94,7 @@ public class CalculatorController {
   public void two() {
     field.appendText("2");
     canPut = true;
+    VBox.requestFocus();
   }
 
   /**
@@ -100,6 +103,7 @@ public class CalculatorController {
   public void three() {
     field.appendText("3");
     canPut = true;
+    VBox.requestFocus();
   }
 
   /**
@@ -108,6 +112,7 @@ public class CalculatorController {
   public void four() {
     field.appendText("4");
     canPut = true;
+    VBox.requestFocus();
   }
 
   /**
@@ -116,6 +121,7 @@ public class CalculatorController {
   public void five() {
     field.appendText("5");
     canPut = true;
+    VBox.requestFocus();
   }
 
   /**
@@ -124,6 +130,7 @@ public class CalculatorController {
   public void six() {
     field.appendText("6");
     canPut = true;
+    VBox.requestFocus();
   }
 
   /**
@@ -132,14 +139,16 @@ public class CalculatorController {
   public void seven() {
     field.appendText("7");
     canPut = true;
+    VBox.requestFocus();
   }
 
   /**
-   * It appends a eight to the text field
+   * It appends eight to the text field
    */
   public void eight() {
     field.appendText("8");
     canPut = true;
+    VBox.requestFocus();
   }
 
   /**
@@ -148,16 +157,17 @@ public class CalculatorController {
   public void nine() {
     field.appendText("9");
     canPut = true;
+    VBox.requestFocus();
   }
 
   /**
-   * It modify the expression by adding _+_
+   * It modifies the expression by adding _+_
    * It clear the field
    * It displays the expression in the top label
-   *
-   * if another operator were put, it will be substitute with _+_
+   * if another operator were put, it will be substituted with _+_
    */
   public void add() {
+    VBox.requestFocus();
     operator = '+';
     if (!canPut) {
       if (expressionLabel.getText().length() == 0) return;
@@ -179,13 +189,13 @@ public class CalculatorController {
   }
 
   /**
-   * It modify the expression by adding _-_
+   * It modifies the expression by adding _-_
    * It clear the field
    * It displays the expression in the top label
-   *
-   * if another operator were put, it will be substitute with _-_
+   * if another operator were put, it will be substituted with _-_
    */
   public void subtract() {
+    VBox.requestFocus();
     operator = '-';
     if (!canPut) {
       if (expressionLabel.getText().length() == 0) return;
@@ -207,13 +217,13 @@ public class CalculatorController {
   }
 
   /**
-   * It modify the expression by adding _*_
+   * It modifies the expression by adding _*_
    * It clear the field
    * It displays the expression in the top label
-   *
-   * if another operator were put, it will be substitute with _*_
+   * if another operator were put, it will be substituted with _*_
    */
   public void multiply() {
+    VBox.requestFocus();
     operator = '*';
     if (!canPut) {
       if (expressionLabel.getText().length() == 0) return;
@@ -235,13 +245,13 @@ public class CalculatorController {
   }
 
   /**
-   * It modify the expression by adding _/_
+   * It modifies the expression by adding _/_
    * It clear the field
    * It displays the expression in the top label
-   *
-   * if another operator were put, it will be substitute with _/_
+   * if another operator were put, it will be substituted with _/_
    */
   public void divide() {
+    VBox.requestFocus();
     operator = '/';
     if (!canPut) {
       if (expressionLabel.getText().length() == 0) return;
@@ -266,21 +276,26 @@ public class CalculatorController {
   /**
    * not complete method yet
    */
-  public void frazionario() {}
+  public void frazionario() {
+    VBox.requestFocus();
+  }
 
   /**
    * not complete method yet
    */
-  public void percentBtn() {}
+  public void percentBtn() {
+    VBox.requestFocus();
+
+  }
 
   /**
-   * It modify the expression by adding _^_
+   * It modifies the expression by adding _^_
    * It clear the field
    * It displays the expression in the top label
-   *
-   * if another operator were put, it will be substitute with _^_
+   * if another operator were put, it will be substituted with _^_
    */
   public void pow() {
+    VBox.requestFocus();
     operator = '^';
     if (!canPut) {
       if (expressionLabel.getText().length() == 0) return;
@@ -306,13 +321,15 @@ public class CalculatorController {
    * not complete method yet
    */
   public void sqrt() {
+    VBox.requestFocus();
     // double ris = Math.sqrt(Double.parseDouble(findResult()));
   }
 
   /**
-   * It append a comma in the field only if it isn't empty
+   * It appends a comma in the field only if it isn't empty
    */
   public void comma() {
+    VBox.requestFocus();
     if (field.getLength() != 0) {
       field.appendText(".");
       canPut = false;
@@ -320,9 +337,10 @@ public class CalculatorController {
   }
 
   /**
-   * It cange the sign of the number in the field
+   * It changes the sign of the number in the field
    */
   public void negative() {
+    VBox.requestFocus();
     if (!result) {
       if (!field.getText().contains("-")) field.setText(
         "-" + field.getText()
@@ -331,9 +349,10 @@ public class CalculatorController {
   }
 
   /**
-   * it clear the field
+   * it clears the field
    */
   public void ce() {
+    VBox.requestFocus();
     clear();
   }
 
@@ -341,6 +360,7 @@ public class CalculatorController {
    * delete the last character puts in the field
    */
   public void delete() {
+    VBox.requestFocus();
     if (!result) {
       if (field.getLength() != 0) {
         field.setText(field.getText(0, field.getLength() - 1));
@@ -350,9 +370,10 @@ public class CalculatorController {
   }
 
   /**
-   * it clear all (the field, the expression label and the expression)
+   * it clears all (the field, the expression label and the expression)
    */
   public void canc() {
+    VBox.requestFocus();
     opCounter = 0;
     result = false;
     expression.delete(0, expression.length());
@@ -364,6 +385,7 @@ public class CalculatorController {
    * It displays in the field the result of the expression.
    */
   public void equals() {
+    VBox.requestFocus();
     String ris;
     if (!result) {
       try {
@@ -381,7 +403,7 @@ public class CalculatorController {
         );
         expression.delete(0, expression.length()).append(ris);
       } catch (Exception e) {
-        System.out.println("An error occured :(");
+        System.out.println("An error occurred :(");
         canc();
       }
     }
@@ -393,17 +415,18 @@ public class CalculatorController {
   private void clear() {
     field.setText("");
     canPut = false;
+    VBox.requestFocus();
   }
 
   /**
    * It finds the result of the expression.
    * if the expression have only two numbers it do the short version, simply it return the result
-   * otherwise it return the result finded with the Calculator class algorithm.
+   * otherwise it return the result found with the Calculator class algorithm.
    * @return result of the expression
    */
   private String findResult() {
     if (opCounter == 1) {
-      n2 = Double.parseDouble(field.getText());
+      double n2 = Double.parseDouble(field.getText());
 
       opCounter = 0;
       return switch (operator) {

@@ -1,17 +1,13 @@
 # Calculator
 Calculator in java
 
-(until the version b.0.2, the program was fully done by "C4V4H")
+(until the version b.0.3, the program was fully done by "C4V4H")
 
-## Update ver. b.0.2
+## Update ver. b.0.3
 Pach Notes:
 
+* Updated graphics in the tab;
 
-* Added support for exponentials;
-
-* Added support for double numbers;
-
-* Fixed another bug with equals;
 
 
 
